@@ -409,7 +409,27 @@ Page({
   // 滑动切换tab 
   bindChange: function (e) {
     var that = this
-    that.setData({ currentTab: e.detail.current })
+    that.setData({ 
+      currentTab: e.detail.current,
+      monthExpendArr: that.data.monthExpendArr,
+      monthIncomeArr: that.data.monthIncomeArr,
+      monthResidueArr: that.data.monthResidueArr,
+      yearExpendArr: that.data.yearExpendArr,
+      yearIncomeArr: that.data.yearIncomeArr,
+      yearResidueArr: that.data.yearResidueArr,
+      totalExpendArr: that.data.totalExpendArr,
+      totalIncomeArr: that.data.totalIncomeArr,
+      totalResidueArr: that.data.totalResidueArr,
+      monthExpendAna: that.data.monthExpendAna,
+      monthIncomeAna: that.data.monthIncomeAna,
+      monthResidueAna: that.data.monthResidueAna,
+      yearExpendAna: that.data.yearExpendAna,
+      yearIncomeAna: that.data.yearIncomeAna,
+      yearResidueAna: that.data.yearResidueAna,
+      totalExpendAna: that.data.totalExpendAna,
+      totalIncomeAna: that.data.totalIncomeAna,
+      totalResidueAna: that.data.totalResidueAna,
+     })
   },
   // 点击tab切换 
   swichNav: function (e) {
@@ -418,7 +438,25 @@ Page({
       return false
     } else {
       that.setData({
-        currentTab: e.target.dataset.current
+        currentTab: e.target.dataset.current,
+        monthExpendArr: that.data.monthExpendArr,
+        monthIncomeArr: that.data.monthIncomeArr,
+        monthResidueArr: that.data.monthResidueArr,
+        yearExpendArr: that.data.yearExpendArr,
+        yearIncomeArr: that.data.yearIncomeArr,
+        yearResidueArr: that.data.yearResidueArr,
+        totalExpendArr: that.data.totalExpendArr,
+        totalIncomeArr: that.data.totalIncomeArr,
+        totalResidueArr: that.data.totalResidueArr,
+        monthExpendAna: that.data.monthExpendAna,
+        monthIncomeAna: that.data.monthIncomeAna,
+        monthResidueAna: that.data.monthResidueAna,
+        yearExpendAna: that.data.yearExpendAna,
+        yearIncomeAna: that.data.yearIncomeAna,
+        yearResidueAna: that.data.yearResidueAna,
+        totalExpendAna: that.data.totalExpendAna,
+        totalIncomeAna: that.data.totalIncomeAna,
+        totalResidueAna: that.data.totalResidueAna,
       })
     }
   },

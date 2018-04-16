@@ -4,6 +4,7 @@
   border-bottom: 1rpx solid #EAE9E9; 
   text-align: center; 
   line-height: 80rpx;
+  display:fixed;
 }
 .swiper-tab-list{
   font-size: 30rpx; 
@@ -76,7 +77,11 @@
   line-height:45px;
   padding:0 10px;
 }
-
+.recordBill{
+  position:fixed;
+  bottom:40rpx;
+  left:308rpx;
+}
 .type{
   /* float:left; */
    padding:0 110rpx; 
@@ -199,21 +204,24 @@ radio-group image{
 
 /*报表详细清单的样式 */
 .detail_type{
-  padding:0 0 0 50rpx;
   height:40px;
   border-top:1px solid #ddd;
   line-height:40px;
   font-size:14px;
   text-align:left;
 }
-.detail_type .type_d{
-  padding:0 120rpx 0 120rpx;
+.detail_type .block{
+  width:25%;
+  float:left;
+  text-align:center;
 }
-.detail_type .number{
-  /* float:right; */
-  padding:0 120rpx 0 0
+.detail_type .three{
+  width:33%;
+  float:left;
+  text-align:center;
 }
-.detail_type image{
+
+.detail_type .block image{
   width:28px;
   height:28px;
   vertical-align:middle;

@@ -6,7 +6,7 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#F7F7FA",
+    "navigationBarBackgroundColor": "#D74B3B",
     "navigationBarTitleText": "记账本",
     "navigationBarTextStyle":"black",
     "backgroundColor":"#eeeeee"
@@ -16,14 +16,14 @@
       {
         "pagePath": "pages/index/index",
         "text": "记账",
-        "iconPath":"pages/img/Home2.png",
-        "selectedIconPath":"pages/img/Home1.png"
+        "iconPath":"pages/img/notebook.png",
+        "selectedIconPath":"pages/img/notebook1.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "pages/img/notebook.png",
-        "selectedIconPath": "pages/img/notebook1.png"
+        "iconPath": "pages/img/user.png",
+        "selectedIconPath": "pages/img/user1.png"
       }
     ]
   }

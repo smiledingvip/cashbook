@@ -11,7 +11,7 @@
       {{dateValue}}
     </picker>
     <text>当日总账</text><text class="{{totalAmount>0?'amount_red':'amount_green'}}">{{totalAmount>0?'+'+totalAmount:'-'+(0-totalAmount)}}</text>
-    <button type="primary" bindtap="forminput">记一笔</button>
+    
     <view class="section" data-id="{{index}}" bindtap="choseSection" wx:for="{{dateBill}}" wx:for-item="item" wx:key="index" style="{{(index%2)==0?'background-color:#eee':'background-color:#fff'}}">
       <image class="sign" style="{{index==id?'display:none':'display:inline-block'}}" src="../img/{{item.img}}.png"></image>
       <text class="type" value="{{item.type1}}">{{item.type1}}</text>
@@ -19,9 +19,10 @@
       <image class="modify" bindtap="modifyinput" style="{{index==id?'display:block':'display:none'}}" src="../img/modify.png"></image>
       <image class="modify" bindtap="showModal" style="{{index==id?'display:block':'display:none'}}" src="../img/delete.png"></image>
     </view>
-
+    
     
   </swiper-item>
+  <button class="recordBill" type="primary" bindtap="forminput">记一笔</button>
   <swiper-item>
     
   <!--报表饼状图页面  -->
@@ -40,88 +41,92 @@
   <!-- 月总支出 -->
   <canvas style="width:750rpx;height:500rpx" canvas-id="monthExpend"></canvas>
    <view class="detail_type" wx:for="{{monthExpendAna}}" wx:for-item="item" wx:key="index" style="">
-      <image class="sign" style="" src="../img/{{item.img}}.png"></image>
-      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
-      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
-      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    <view class="block"><image class="sign" style="" src="../img/{{item.img}}.png"></image></view>
+    <view class="block"><text class="type_d" value="{{item.type1}}">{{item.type1}}</text></view>
+    <view class="block"><text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text></view>
+    <view class="block"><text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text></view>
+      
     </view> 
   </view>
   <view class="{{(selected0 && selected4)?'show':'hidden'}}">
   <!--月总收入  -->
     <canvas style="width:750rpx;height:500rpx" canvas-id="monthIncome"></canvas>
     <view class="detail_type" wx:for="{{monthIncomeAna}}" wx:for-item="item" wx:key="index" style="">
-      <image class="sign" style="" src="../img/{{item.img}}.png"></image>
-      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
-      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
-      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+      <view class="block"><image class="sign" style="" src="../img/{{item.img}}.png"></image></view>
+      <view class="block"><text class="type_d" value="{{item.type1}}">{{item.type1}}</text></view>
+      <view class="block"><text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text></view>
+      <view class="block"><text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text></view>
+      
     </view> 
   </view>
   <view class="{{(selected0 && selected5)?'show':'hidden'}}">
   <!--月总结余  -->
     <canvas style="width:750rpx;height:500rpx" canvas-id="monthResidue"></canvas>
     <view class="detail_type" wx:for="{{monthResidueAna}}" wx:for-item="item" wx:key="index" style="">
-      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
-      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
-      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
-    </view> 
+      <view class="three"><text class="type_d" value="{{item.type1}}">{{item.type1}}</text></view>
+      <view class="three"><text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text></view>
+      <view class="three"><text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    </view> </view>
   </view>
   <view class="{{(selected1 && selected3)?'show':'hidden'}}">
   <!--年总支出  -->
     <canvas style="width:750rpx;height:500rpx" canvas-id="yearExpend"></canvas>
     <view class="detail_type" wx:for="{{yearExpendAna}}" wx:for-item="item" wx:key="index" style="">
-      <image class="sign" style="" src="../img/{{item.img}}.png"></image>
-      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
-      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
-      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+      <view class="block"><image class="sign" style="" src="../img/{{item.img}}.png"></image></view>
+      <view class="block"><text class="type_d" value="{{item.type1}}">{{item.type1}}</text></view>
+      <view class="block"><text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text></view>
+      <view class="block"><text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text></view>
     </view> 
   </view>
   <view class="{{(selected1 && selected4)?'show':'hidden'}}">
   <!--年总收入  -->
     <canvas style="width:750rpx;height:500rpx" canvas-id="yearIncome"></canvas>
     <view class="detail_type" wx:for="{{yearIncomeAna}}" wx:for-item="item" wx:key="index" style="">
-      <image class="sign" style="" src="../img/{{item.img}}.png"></image>
-      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
-      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
-      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+      <view class="block"><image class="sign" style="" src="../img/{{item.img}}.png"></image></view>
+      <view class="block"><text class="type_d" value="{{item.type1}}">{{item.type1}}</text></view>
+      <view class="block"><text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text></view>
+      <view class="block"><text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text></view>
     </view>
   </view>
   <view class="{{(selected1 && selected5)?'show':'hidden'}}">
     <!--年总结余  -->
     <canvas style="width:750rpx;height:500rpx" canvas-id="yearResidue"></canvas>
     <view class="detail_type" wx:for="{{yearResidueAna}}" wx:for-item="item" wx:key="index" style="">
-      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
-      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
-      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
-    </view>
+      <view class="three"><text class="type_d" value="{{item.type1}}">{{item.type1}}</text></view>
+      <view class="three"><text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text></view>
+      <view class="three"><text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    </view></view>
+      
   </view>
   <view class="{{(selected2 && selected3)?'show':'hidden'}}">
     <!--合计总支出  -->
     <canvas style="width:750rpx;height:500rpx" canvas-id="totalExpend"></canvas>
     <view class="detail_type" wx:for="{{totalExpendAna}}" wx:for-item="item" wx:key="index" style="">
-      <image class="sign" style="" src="../img/{{item.img}}.png"></image>
-      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
-      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
-      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+      <view class="block"><image class="sign" style="" src="../img/{{item.img}}.png"></image></view>
+      <view class="block"><text class="type_d" value="{{item.type1}}">{{item.type1}}</text></view>
+      <view class="block"><text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text></view>
+      <view class="block"><text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text></view>
+      
     </view>
   </view>
   <view class="{{(selected2 && selected4)?'show':'hidden'}}">
     <!--合计总收入  -->
     <canvas style="width:750rpx;height:500rpx" canvas-id="totalIncome"></canvas>
     <view class="detail_type" wx:for="{{totalIncomeAna}}" wx:for-item="item" wx:key="index" style="">
-      <image class="sign" style="" src="../img/{{item.img}}.png"></image>
-      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
-      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
-      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+      <view class="block"><image class="sign" style="" src="../img/{{item.img}}.png"></image></view>
+      <view class="block"><text class="type_d" value="{{item.type1}}">{{item.type1}}</text></view>
+      <view class="block"><text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text></view>
+      <view class="block"> <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text></view>
     </view>
   </view>
   <view class="{{(selected2 && selected5)?'show':'hidden'}}">
     <!--合计总结余  -->
     <canvas style="width:750rpx;height:500rpx" canvas-id="totalResidue"></canvas>
     <view class="detail_type" wx:for="{{totalResidueAna}}" wx:for-item="item" wx:key="index" style="">
-      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
-      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
-      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
-    </view>
+      <view class="three"><text class="type_d" value="{{item.type1}}">{{item.type1}}</text></view>
+      <view class="three"><text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text></view>
+      <view class="three"><text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    </view></view>
   </view>
 
   </swiper-item>
