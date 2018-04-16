@@ -1,0 +1,154 @@
+<!--index.wxml-->
+<!--首页swiper-tab抬头  -->
+<view class="swiper-tab">
+  <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">记账</view>
+  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">报表</view>
+</view>
+<!--首页swiper-tab内容  -->
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
+  <swiper-item>
+    <picker class="dataPicker" mode="date" value="{{dateValue}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange">
+      {{dateValue}}
+    </picker>
+    <text>当日总账</text><text class="{{totalAmount>0?'amount_red':'amount_green'}}">{{totalAmount>0?'+'+totalAmount:'-'+(0-totalAmount)}}</text>
+    <button type="primary" bindtap="forminput">记一笔</button>
+    <view class="section" data-id="{{index}}" bindtap="choseSection" wx:for="{{dateBill}}" wx:for-item="item" wx:key="index" style="{{(index%2)==0?'background-color:#eee':'background-color:#fff'}}">
+      <image class="sign" style="{{index==id?'display:none':'display:inline-block'}}" src="../img/{{item.img}}.png"></image>
+      <text class="type" value="{{item.type1}}">{{item.type1}}</text>
+      <text class="{{item.amount>0?'amount_red':'amount_green'}}" value="{{item.amount}}">{{item.amount>0?'+'+item.amount:'-'+(0-item.amount)}}</text>
+      <image class="modify" bindtap="modifyinput" style="{{index==id?'display:block':'display:none'}}" src="../img/modify.png"></image>
+      <image class="modify" bindtap="showModal" style="{{index==id?'display:block':'display:none'}}" src="../img/delete.png"></image>
+    </view>
+
+    
+  </swiper-item>
+  <swiper-item>
+    
+  <!--报表饼状图页面  -->
+
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{selected0?'on':''}}" bindtap="selected0">{{month}}月</view>
+    <view class="swiper-tab-list {{selected1?'on':''}}" bindtap="selected1">{{year}}</view>
+    <view class="swiper-tab-list {{selected2?'on':''}}" bindtap="selected2">合计</view>
+  </view>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{selected3?'on':''}}" bindtap="selected3">总支出</view>
+    <view class="swiper-tab-list {{selected4?'on':''}}" bindtap="selected4">总收入</view>
+    <view class="swiper-tab-list {{selected5?'on':''}}" bindtap="selected5">总结余</view>
+  </view>
+  <view class="{{(selected0 && selected3)?'show':'hidden'}}">
+  <!-- 月总支出 -->
+  <canvas style="width:750rpx;height:500rpx" canvas-id="monthExpend"></canvas>
+   <view class="detail_type" wx:for="{{monthExpendAna}}" wx:for-item="item" wx:key="index" style="">
+      <image class="sign" style="" src="../img/{{item.img}}.png"></image>
+      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
+      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
+      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    </view> 
+  </view>
+  <view class="{{(selected0 && selected4)?'show':'hidden'}}">
+  <!--月总收入  -->
+    <canvas style="width:750rpx;height:500rpx" canvas-id="monthIncome"></canvas>
+    <view class="detail_type" wx:for="{{monthIncomeAna}}" wx:for-item="item" wx:key="index" style="">
+      <image class="sign" style="" src="../img/{{item.img}}.png"></image>
+      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
+      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
+      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    </view> 
+  </view>
+  <view class="{{(selected0 && selected5)?'show':'hidden'}}">
+  <!--月总结余  -->
+    <canvas style="width:750rpx;height:500rpx" canvas-id="monthResidue"></canvas>
+    <view class="detail_type" wx:for="{{monthResidueAna}}" wx:for-item="item" wx:key="index" style="">
+      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
+      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
+      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    </view> 
+  </view>
+  <view class="{{(selected1 && selected3)?'show':'hidden'}}">
+  <!--年总支出  -->
+    <canvas style="width:750rpx;height:500rpx" canvas-id="yearExpend"></canvas>
+    <view class="detail_type" wx:for="{{yearExpendAna}}" wx:for-item="item" wx:key="index" style="">
+      <image class="sign" style="" src="../img/{{item.img}}.png"></image>
+      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
+      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
+      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    </view> 
+  </view>
+  <view class="{{(selected1 && selected4)?'show':'hidden'}}">
+  <!--年总收入  -->
+    <canvas style="width:750rpx;height:500rpx" canvas-id="yearIncome"></canvas>
+    <view class="detail_type" wx:for="{{yearIncomeAna}}" wx:for-item="item" wx:key="index" style="">
+      <image class="sign" style="" src="../img/{{item.img}}.png"></image>
+      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
+      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
+      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    </view>
+  </view>
+  <view class="{{(selected1 && selected5)?'show':'hidden'}}">
+    <!--年总结余  -->
+    <canvas style="width:750rpx;height:500rpx" canvas-id="yearResidue"></canvas>
+    <view class="detail_type" wx:for="{{yearResidueAna}}" wx:for-item="item" wx:key="index" style="">
+      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
+      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
+      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    </view>
+  </view>
+  <view class="{{(selected2 && selected3)?'show':'hidden'}}">
+    <!--合计总支出  -->
+    <canvas style="width:750rpx;height:500rpx" canvas-id="totalExpend"></canvas>
+    <view class="detail_type" wx:for="{{totalExpendAna}}" wx:for-item="item" wx:key="index" style="">
+      <image class="sign" style="" src="../img/{{item.img}}.png"></image>
+      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
+      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
+      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    </view>
+  </view>
+  <view class="{{(selected2 && selected4)?'show':'hidden'}}">
+    <!--合计总收入  -->
+    <canvas style="width:750rpx;height:500rpx" canvas-id="totalIncome"></canvas>
+    <view class="detail_type" wx:for="{{totalIncomeAna}}" wx:for-item="item" wx:key="index" style="">
+      <image class="sign" style="" src="../img/{{item.img}}.png"></image>
+      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
+      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
+      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    </view>
+  </view>
+  <view class="{{(selected2 && selected5)?'show':'hidden'}}">
+    <!--合计总结余  -->
+    <canvas style="width:750rpx;height:500rpx" canvas-id="totalResidue"></canvas>
+    <view class="detail_type" wx:for="{{totalResidueAna}}" wx:for-item="item" wx:key="index" style="">
+      <text class="type_d" value="{{item.type1}}">{{item.type1}}</text>
+      <text class="number" value="{{item.amount}}">{{item.amount>0?item.amount:(0-item.amount)}}</text>
+      <text class="right" value="{{item.proportion}}">{{item.proportion*100+'%'}}</text>
+    </view>
+  </view>
+
+  </swiper-item>
+</swiper>
+
+<!--删除明细警告框  -->
+<modal hidden="{{modalHidden}}" id="{{index}}" title="警告" confirm-text="确定" cancel-text="取消" bindconfirm="confirm" bindcancel="cancel">确认要删除此条账单吗？</modal>
+<!--插入明细表单  -->
+<form class="detail" title="记一笔" hidden="{{hiddenformput}}" bindsubmit="formSubmit" bindreset="formReset">
+  <view class="header">
+    <button class="back" formType="reset">×</button>
+    <button class="sub" type="primary" formType="submit">发布</button>
+  </view>
+  <view>
+    <radio-group class="group" bindchange="radioChange">
+      <view class="label-2" wx:for="{{type1}}">
+        <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
+
+
+        <label class="label-2__text" style="opacity:{{item.checked ? 1: 0.5}}" for="{{item.name}}">
+          <image src="../img/{{item.img}}.png"></image>
+          <text name="{{item.name}}">{{item.name}}</text>
+        </label>
+      </view>
+    </radio-group>
+  </view>
+  <input type='digit' placeholder="￥0.00" name="amount" style="background-color:{{color}}" auto-focus/>
+  <view class="btn-area">
+  </view>
+</form>

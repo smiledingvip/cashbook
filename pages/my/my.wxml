@@ -1,0 +1,9 @@
+<!--pages/my/my.wxml-->
+<image style="width:750rpx;height:400rpx" src="../img/mybackground.jpg"></image>
+<image src="{{userInfo.avatarUrl}}" class="avatarUrl"></image>
+<text class="nickname">{{userInfo.nickName}}</text>
+<view class="section" style="margin-top:120rpx">心愿存钱</view>
+<view class="section">记账提醒</view>
+<view class="section">主题皮肤</view>
+<view class="section" style="margin-top:20rpx">帮助与反馈</view>
+<view class="section">爱的鼓励</view>

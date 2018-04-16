@@ -1,0 +1,28 @@
+/* pages/new/new.wxss */
+
+.detail{
+  width:250px;
+  height:310px;
+  position:absolute;
+  background-color:#fff;
+  margin:auto;
+  top:0;
+  bottom:0;
+  right:0;  
+  left:0; 
+  font-size:14px;
+  padding:10px 10px;
+}
+.detail table{
+  margin:0 auto;
+}
+.detail radio{
+  margin:7px 0;
+
+}
+.detail input{
+  margin:7px 0;
+}
+.detail .btn-area{
+  margin:7px 0;
+}

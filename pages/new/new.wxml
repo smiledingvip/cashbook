@@ -1,0 +1,21 @@
+<!--pages/new/new.wxml-->
+<form class="detail" title="记一笔" bindsubmit="formSubmit" bindreset="formReset">
+  <table>
+    <view>记一笔</view>
+  </table>
+  <radio-group class="radio-group" name="inc" bindchange="radioChange">
+    <label class="radio" wx:for="{{inc}}" wx:key="index">
+      <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+    </label>
+  </radio-group>
+  <input type='digit' placeholder="0.00" name="amount" auto-focus/>
+  <radio-group class="radio-group" name="type1" bindchange="radioChange">
+    <label class="radio" wx:for="{{type1}}" wx:key="index">
+      <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+    </label>
+  </radio-group>
+  <view class="btn-area">
+    <button formType="submit">Submit</button>
+    <button formType="reset">Reset</button>
+  </view>
+</form>

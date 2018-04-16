@@ -1,0 +1,28 @@
+/* pages/my/my.wxss */
+page{
+  background-color:#eee
+}
+.section{
+  height:100rpx;
+  line-height:100rpx;
+  border-top:1px solid #ddd;
+  background-color:#fff;
+  font-size:14px;
+  text-indent:30rpx;
+}
+.avatarUrl{
+  position:absolute;
+  left:30rpx;
+  top:350rpx;
+  width: 165rpx;
+  height: 165rpx;
+  border-radius: 50%;
+  border:2px solid #fff
+}
+.nickname{
+  position:absolute;
+  left:240rpx;
+  top:430rpx;
+  font-size:20px;
+  color:lightslategray;
+}

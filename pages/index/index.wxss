@@ -1,0 +1,220 @@
+/**index.wxss**/
+.swiper-tab{
+  width: 100%; 
+  border-bottom: 1rpx solid #EAE9E9; 
+  text-align: center; 
+  line-height: 80rpx;
+}
+.swiper-tab-list{
+  font-size: 30rpx; 
+  display: inline-block; 
+  width: 20%; 
+}
+.on{
+  color: #D74B3B; 
+  border-bottom: 3rpx solid #D74B3B;
+}
+.swiper-box{ 
+  display: block;
+  height: 100%;
+  width: 100%;
+  font-size:30rpx;
+ }
+ .swiper-box text{
+   display:inline-block;
+   height:80rpx;
+   line-height:80rpx;
+ }
+ swiper-item{
+   overflow:auto;
+ }
+.dataPicker{
+  float:right;
+  height:80rpx;
+  line-height:80rpx;
+}
+.section{
+  padding:0 0 0 30rpx;
+  height:60px;
+  border-bottom:1px dashed #999;
+  line-height:60px;
+  font-size:16px;
+}
+.section image{
+  width:40px;
+  height:40px;
+  vertical-align:middle;
+}
+.section image.sign{
+  margin-left:50rpx; 
+}
+.section image.modify{
+  width:60px;
+  height:100%;
+  float:right;
+   display:none; 
+}
+.section-title1{
+  background-color:green;
+  font-size:14px;
+  color:#fff;
+  height:30px;
+  line-height:30px;
+  padding:0 10px;
+}
+.section-title2{
+  background-color:red;
+  font-size:14px;
+  color:#fff;
+  height:30px;
+  line-height:30px;
+   padding:0 10px;
+}
+.section-content{
+  height:45px;
+  background-color:#fff;
+  line-height:45px;
+  padding:0 10px;
+}
+
+.type{
+  /* float:left; */
+   padding:0 110rpx; 
+}
+.amount_green{
+   /* float:right;  */
+  color:#93DCB7;
+}
+.amount_red{
+   /* float:right;  */
+  color:#DB6C63;
+}
+.detail{
+  width:100%;
+  height:100%;
+  position:absolute;
+  background-color:#fff;
+  margin:auto;
+  top:0;
+  bottom:0;
+  right:0;  
+  left:0; 
+  font-size:14px;
+  /* padding:10px 10px; */
+}
+.detail .header{
+  background-color:#F8F8F8;
+   padding: 10rpx 20rpx; 
+  border-top:1px solid #F8F8F8;
+  border-bottom:1px solid #ECECEC;
+}
+.detail table{
+  margin:0 auto;
+}
+.detail radio{
+  margin:7px 0;
+
+}
+.detail input{
+  margin-top:15px;
+  height:80rpx;
+  line-height:80rpx;
+  font-size:16px;
+  padding: 20rpx 30rpx;
+  color:#fff;
+  /* background-color: #eee; */
+  /* border-bottom: 1px solid #dddddd; */
+
+}
+.detail button{
+  display:inline-block;
+  font-size:15px;
+  line-height:2.3;
+}
+.detail button.sub{
+   background-color:#8ED498; 
+  float:right;
+}
+.detail .btn-area{
+  margin:7px 0;
+}
+/*明细菜单样式  */
+.label-2{
+    margin-top:15px;
+    width:150rpx;
+    text-align:center;
+}
+.label-2__text {
+    display: inline-block;
+    vertical-align: middle;
+}
+radio-group{
+  display:flex;
+  flex-wrap:wrap;
+}
+radio-group image{
+  width:40px;
+  height:40px;
+  display:block;
+}
+
+/*报表饼状图css*/
+.nav{
+  width:100%;
+  height:100rpx;
+  display:flex;
+  flex-direction:row;
+}
+.bc_white{
+  background-color:#fff
+}
+.default{
+  line-height:100rpx;
+  text-align:center;
+  flex:1;
+  border-right:1px solid gainsboro;
+  color:#000;
+  font-weight:bold;
+  font-size:28rpx;
+}
+.red{
+  line-height:100rpx;
+  text-align:center;
+  color:#fc5558;
+  flex:1;
+  border-right:1px solid gainsboro;
+  font-weight:bold;
+  font-size:28rpx;
+}
+.show{
+  display:block;
+  text-align:center;
+  line-height:200rpx;
+}
+.hidden{
+  display:none;
+  text-align:center;
+  line-height:200px;
+}
+
+/*报表详细清单的样式 */
+.detail_type{
+  padding:0 0 0 50rpx;
+  height:40px;
+  border-top:1px solid #ddd;
+  line-height:40px;
+  font-size:14px;
+  text-align:left;
+}
+.detail_type .type_d{
+  padding:0 120rpx 0 120rpx;
+}
+.detail_type .number{
+  /* float:right; */
+  padding:0 120rpx 0 0
+}
+.detail_type image{
+  width:28px;
+  height:28px;
+  vertical-align:middle;
+}
